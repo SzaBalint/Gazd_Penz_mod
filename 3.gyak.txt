@@ -1,0 +1,109 @@
+
+R version 4.2.1 (2022-06-23 ucrt) -- "Funny-Looking Kid"
+Copyright (C) 2022 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> x<-c(1,2,3,4,5)
+> x
+[1] 1 2 3 4 5
+> x=0
+> x=rnorm(100)
+> x
+  [1] -1.49504452 -0.13651516  0.18719136  0.34531688  2.89293266 -1.30492875 -0.25209468 -0.33401388
+  [9] -0.83799349  0.08738194 -1.54204649 -1.46488555 -0.42570967 -1.10607616  1.33535852  0.39473025
+ [17] -0.08069785 -0.69112916 -0.77245737 -0.57640782 -0.31898041  0.02329579 -0.49098387 -1.00070760
+ [25]  0.44843371 -0.58377244  0.26485667 -0.35835859 -0.17206375 -0.90108857 -0.08045457 -0.96463235
+ [33]  1.17463707  0.25326912  1.25751780 -1.50133988  0.05735417  0.52789416  0.51041025  0.77389425
+ [41]  0.31158435 -0.81880162  0.40069647  0.09418180  0.23046798 -2.47393079  0.12841053  0.73147525
+ [49] -0.40432474 -0.29840510  0.69604581  0.59887737 -0.84723092  0.46507117  1.13172482 -0.06776972
+ [57] -1.58945741  0.88272947 -0.47365521 -0.54796072  0.62560636  0.20044091  0.55695117  0.87352059
+ [65] -0.58681412  1.86140637 -0.64078013  2.09164975  0.41209864 -0.12628201 -0.97938658 -0.73821626
+ [73]  0.97537786 -0.51497398 -0.86095022  1.20290928 -0.61191705  0.23306024 -0.92977208 -1.35893506
+ [81]  0.71566017  0.14245913 -1.64932084 -0.02869147 -0.62091430  0.09498710  0.99525611 -2.19273079
+ [89] -0.30308493  0.04866901  1.67562768  1.73860605 -1.66172215 -0.84213722  1.41289735  0.66977064
+ [97]  0.09636537 -0.11586759 -0.51519071 -0.27263200
+> function(X){S=0; for(i in 1:3){S=S+X[i]}; return(S)}
+
+> summa<-function(x){S=0; for(i in 1:length(x)){S=S+X[i]}; return(S)}
+> summa(x)
+Error in summa(x) : object 'X' not found
+> summa<-function(x){S=0; for(i in 1:length(x)){S=S+x[i]}; return(S)}
+> summa(x)
+[1] -7.635179
+> emp<-function(x){S=0; for(i in 1:length(x)){S=S+x[i]}; return(S/length(x))}
+> emp(x)
+[1] -0.07635179
+> u<-function(x,0,emp(x))
+Error: unexpected numeric constant in "u<-function(x,0"
+> m<-0
+> m
+[1] 0
+> u<-function(x,m,emp(x))
+Error: unexpected '(' in "u<-function(x,m,emp("
+> u<-function(x){S=0; for(i in 1:length(x)){S=S+[i]}; return((S-m)/(emp(x))/sqrt(length(x))
+Error: unexpected '[' in "u<-function(x){S=0; for(i in 1:length(x)){S=S+["
+> u<-function(x){S=0; for(i in 1:length(x)){S=S+x[i]}; return((S-m)/(emp(x))/sqrt(length(x))
++ u(x)
+Error: unexpected symbol in:
+"u<-function(x){S=0; for(i in 1:length(x)){S=S+x[i]}; return((S-m)/(emp(x))/sqrt(length(x))
+u"
+> u(x)
+Error in u(x) : could not find function "u"
+> u<-function(x){S=0; for(i in 1:length(x)){S=S+x[i]}; return((S-m)/(emp(x))/sqrt(length(x)))
++ )
+Error: unexpected ')' in:
+"u<-function(x){S=0; for(i in 1:length(x)){S=S+x[i]}; return((S-m)/(emp(x))/sqrt(length(x)))
+)"
+> u<-function(x){S=0; for(i in 1:length(x)){S=S+x[i]}; return((S-m)/(emp(x))/sqrt(length(x))}
+Error: unexpected '}' in "u<-function(x){S=0; for(i in 1:length(x)){S=S+x[i]}; return((S-m)/(emp(x))/sqrt(length(x))}"
+> u<-function(x){S=0; for(i in 1:length(x)){S=S+x[i]}; return((S-m)/(emp(x))/sqrt(length(x))}
+Error: unexpected '}' in "u<-function(x){S=0; for(i in 1:length(x)){S=S+x[i]}; return((S-m)/(emp(x))/sqrt(length(x))}"
+> u<-function(x){S=0; for(i in 1:length(x)){S=S+x[i]}; return((S-m)/((emp(x))/sqrt(length(x)))}
+Error: unexpected '}' in "u<-function(x){S=0; for(i in 1:length(x)){S=S+x[i]}; return((S-m)/((emp(x))/sqrt(length(x)))}"
+> u<-function(x){S=0; for(i in 1:length(x)){S=S+x[i]}; 
+
+> u<-function(x){return((emp(x)-m)/((emp(x))/sqrt(length(x)))}
+Error: unexpected '}' in "u<-function(x){return((emp(x)-m)/((emp(x))/sqrt(length(x)))}"
+> u<-function(x,m,y){u=0, u=(emp(x)-m)*sqrt(length(x))/y; return(u)}
+Error: unexpected ',' in "u<-function(x,m,y){u=0,"
+> u<-function(x,m,y){u=0; u=(emp(x)-m)*sqrt(length(x))/y; return(u)}
+> u(x,0,1(
++ u(x,0,1(
++ )
++ )
++ )
++ )
+Error in u(x, 0, 1(u(x, 0, 1()))) : attempt to apply non-function
+> u(x,0,1)
+[1] -0.7635179
+> u(x,3,5)
+[1] -6.152704
+> kesz<-function(x){S=0; for(i in 1:length(x)){S=S+(x[i]-emp(x))^2}; return(S/(length(x)-1))}
+> kesz(x)
+[1] 0.8801796
+> t<-function(x,m,y){t=0; t=(emp(x)-m*sqrt(length(x))/sqrt(kesz(x)); return(t)}
+Error: unexpected ';' in "t<-function(x,m,y){t=0; t=(emp(x)-m*sqrt(length(x))/sqrt(kesz(x));"
+> t<-function(x,m){t=0; t=(emp(x)-m*sqrt(length(x))/sqrt(kesz(x)); return(t)}
+Error: unexpected ';' in "t<-function(x,m){t=0; t=(emp(x)-m*sqrt(length(x))/sqrt(kesz(x));"
+> t<-function(x,m){t=0; t=(emp(x)-m)*sqrt(length(x))/sqrt(kesz(x)); return(t)}
+> t(x,0)
+[1] -0.8138298
+> t(x,-1)
+[1] 9.845118
+> var(x)
+[1] 0.8801796
+> t(x,0.95)
+[1] -10.93983
+> 
