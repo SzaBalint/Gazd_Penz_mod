@@ -1,0 +1,56 @@
+
+R version 4.2.1 (2022-06-23 ucrt) -- "Funny-Looking Kid"
+Copyright (C) 2022 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> x=rnorm(100)
+> x
+  [1] -1.01264667  0.35079839  0.67642321  0.13316196  1.10053099  0.42987803
+  [7]  0.98243847  0.11256042 -1.24432241  1.00437859 -0.13803157 -0.62022338
+ [13]  0.31178056 -1.83981249  0.58665714 -0.70653342  0.56111259  0.72276976
+ [19] -1.15286533 -1.24499693 -0.19170122  0.81130488  0.44915955  0.18417383
+ [25]  0.16552496 -1.27773649 -0.27812492 -0.90645822 -0.13676253 -1.05647331
+ [31] -0.33397818 -0.42938608 -1.58326729 -1.03174596  0.60276765  0.26722091
+ [37]  0.11082558  0.39041808  1.69737554 -0.94030885 -1.43024853 -0.41934697
+ [43]  0.43018116 -0.13748141 -1.67417818  0.68748290  0.68567773  0.67745242
+ [49]  0.49520917 -1.20055725 -0.74871403  0.43121896 -1.98076367 -1.13069333
+ [55] -2.09389960  2.18244538  0.17496183  0.18555123 -1.01166816 -0.72760784
+ [61]  0.20310074  0.69279425 -0.13281173 -0.34050297 -0.68541420  1.02777577
+ [67] -0.64810242 -0.02399029  0.23655368  1.03530818 -0.26405249  1.17635834
+ [73]  2.61595578  0.34232770 -1.27202431  0.51237360 -1.18357130  0.30137488
+ [79] -1.12980122  0.27768150 -1.65276551 -0.16505168  0.59976609 -0.23649583
+ [85]  0.04921016  0.96841772  0.72325270 -0.67330232  0.13573827  1.52288630
+ [91]  0.12687757 -0.41259730 -1.04806647  0.11470896 -1.46762384 -2.34512673
+ [97] -0.06462275 -1.10326684 -0.15799337 -0.38902200
+> summa<-function(x){S=0; for(i in 1:length(x)){S=S+x[i]}; return(S)}
+> summa(x)
+[1] -13.81284
+> emp<-function(x){S=0; for(i in 1:length(x)){S=S+x[i]}; return(S/length(x))}
+> emp(x)
+[1] -0.1381284
+> u<-function(x,m,y){u=0; u=(emp(x)-m)*sqrt(length(x))/y; return(u)}
+> u(x,0,1)
+[1] -1.381284
+> kesz<-function(x){S=0; for(i in 1:length(x)){S=S+(x[i]-emp(x))^2}; return(S/(length(x)-1))}
+> kesz(x)
+[1] 0.8649109
+> t<-function(x,m){t=0; t=(emp(x)-m)*sqrt(length(x))/sqrt(kesz(x)); return(t)}
+> t(x,0)
+[1] -1.485242
+> var(x)
+[1] 0.8649109
+> mean(x)
+[1] -0.1381284
+> 
