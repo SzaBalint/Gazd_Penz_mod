@@ -1,0 +1,30 @@
+>  n=10000
+> > a=65539
+Error: unexpected '>' in ">"
+> > n
+Error: unexpected '>' in ">"
+> [1] 10000
+Error: unexpected '[' in "["
+> > m=2^31
+Error: unexpected '>' in ">"
+> > x=vector();y=vector();z=vector()
+Error: unexpected '>' in ">"
+> > x0=507
+Error: unexpected '>' in ">"
+> for (i in 1:n){
++ if (i>1) {x[i]=(a*z[i-1])%%m} else {x[i]=(a*x0)%%m}
++ y[i]=(a*x[i])%%m
++ z[i]=(a*y[i])%%m
++ }
+> xi=x/m
+> eta=y/m
+> zeta=z/m
+> scatterplot3d(xi,eta,zeta, highlight.3d = TRUE, col.axis="blue", angle=120, col.grid="lightblue", main="RANDU", type="1")
+Error in plot.xy(xy.coords(x, y), type = type, ...) : 
+  invalid plot type '1'
+> scatterplot3d(xi,eta,zeta, highlight.3d = TRUE, col.axis="blue", angle=120, col.grid="lightblue", main="RANDU")
+> scatterplot3d(xi,eta,zeta, highlight.3d = TRUE, col.axis="blue", angle=155, col.grid="lightblue", main="RANDU")
+> scatterplot3d(xi,eta,zeta, highlight.3d = TRUE, col.axis="blue", angle=155, col.grid="lightblue", main="RANDU",pch=20)
+> local({pkg <- select.list(sort(.packages(all.available = TRUE)),graphics=TRUE)
++ if(nchar(pkg)) library(pkg, character.only=TRUE)})
+> 
