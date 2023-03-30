@@ -1,0 +1,23 @@
+Tegyük fel, hogy k1+k2+...+kr=N, ahol ki (i=1,2,...,r) az i-edik esemény bekövetkezéseinek a számát jelöli
+
+P(ξ1=k1, ξ2=k2,..., ξr=kr)= N!/(k1!*k2!*...*kr!) * P1^k1* P2^k2*...Pr^kr,
+
+ahol pi=P(Ai), (i=1,2,...,r). Ezt az eloszlást multinomiális (vagy polinomiális) eloszlásnak nevezzük.
+
+H0 : P(A1)=p1 , P(A2)=p2, ..., P(Ar)=pr
+Készítsük el a következő formulát:
+
+χ^2= i=1 Σ tol r (ξi-Npi)^2/Npi
+
+A fenti kifejezés közelíti a χ^2 eloszlást, amelynek szabadsági foka r-1.
+
+DOBÓKOCKA
+
+k1=92 , k2=108, k3=91, k4=98, k5=100, k6=111, N=600
+
+χ^2= i=1 Σ tol r (ki-Npi)^2/Npi = i=1 Σ tol r(ki-600*1/6)^2/600*1/6 = i=1 Σ tol r (ki-100)^2/100=
+= i=1 Σ tol 6 (ki-100)^2/100 = (92-100)^2/100 + (108-100)^2/100 + (91-100)^2/100 + (98-100)^2/100 + (100-100)^2/100 + (111-100)^2/100 =
+= (-8)^2/100 + (8)^2/100 + (-9)^/100 + (-2)^2/100 + (11)^2/100 = 64/100 + 64/100 + 81/100 + 4/100 + 121/100 = 334/100 = 3,34
+
+χ^2= 3,34 => elfogadjuk, hogy szabályos a kocka
+0-11,1 < elutasítási tartomány
