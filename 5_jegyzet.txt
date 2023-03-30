@@ -21,3 +21,13 @@ k1=92 , k2=108, k3=91, k4=98, k5=100, k6=111, N=600
 
 χ^2= 3,34 => elfogadjuk, hogy szabályos a kocka
 0-11,1 < elutasítási tartomány
+
+
+χ^2=m*n i=1 Σ tol r(fi/n-ki/m)^2/fi+ki
+
+ahol n= i=1 Σ tol r fi , m= i=1 Σ tol r ki
+
+FELADAT
+
+r=5, f1=51, f2=43, f3=38, f4=56, f5=50
+     k1=32, k2=38, k3=42, k4=51, k5=58

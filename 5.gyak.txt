@@ -17,4 +17,46 @@ function(k,p){N=0; for(i in 1:length(k)){N=N+k[i]}; S=0; for(j in 1:length(p)){S
 > ksz<-function(k,p){N=0; for(i in 1:length(k)){N=N+k[i]}; S=0; for(j in 1:length(p)){S=S+(k[j]-N*p[j])^2/(N*p[j])}; return(S)} 
 > ksz(k,p)
 [1] 3.34
+> ksz<-function(k,p){N=0; for(i in 1:length(k)){N=N+k[i]}; S=0; for(j in 1:length(p)){S=S+(k[j]-N*p[j])^2/(N*p[j])}; if(S<11.1) {return("ELFOGADJUK")} else{return("ELUTASÍTJUK")}} 
+> ksz(k,p)
+[1] "ELFOGADJUK"
+> k=c(32,38,42,51,58)
+> k
+[1] 32 38 42 51 58
+> f=c(51,43,38,56,50)
+> f
+[1] 51 43 38 56 50
+> sumf<-function(f){S=0; for(i in 1:length(f)); return(S)
+Error: unexpected ';' in "sumf<-function(f){S=0; for(i in 1:length(f));"
+> sumf<-function(f){S=0; for(i in 1:length(f)); return(S)}
+Error: unexpected ';' in "sumf<-function(f){S=0; for(i in 1:length(f));"
+> sumf<-function(f){S=0; for(i in 1:length(f));return(S)}
+Error: unexpected ';' in "sumf<-function(f){S=0; for(i in 1:length(f));"
+> sumf<-function(f){S=0; for(i in 1:length(f)){S=S+f[i]};return(S)}
+> sumf(f)
+[1] 238
+> sumf<-function(k){S=0; for(i in 1:length(k)){S=S+f[k]};return(S)}
+> sumf(k)
+[1] NA NA NA NA NA
+> sumf<-function(f){N=0; for(i in 1:length(f)){S=S+f[i]};return(N)}
+> sumf(f)
+Error in sumf(f) : object 'S' not found
+> sumf<-function(f){N=0; for(i in 1:length(f)){N=N+f[i]};return(N)}
+> sumf(f)
+[1] 238
+> sumk<-function(k){M=0; for(i in 1:length(k)){M=M+k[i]};return(M)}
+> sumk(k)
+[1] 221
+> ksz2<-function(k,f){S=0; for(i in l:length(k)){S=S+(f[i]/sumf(f)-k[i]/sumk(k))^2/(f[i]+k[i])}; return(sumf(f)*sumk(k)*S)}
+> ksz2(k,f)
+Error in ksz2(k, f) : object 'l' not found
+> ksz2(k,f)
+Error in ksz2(k, f) : object 'l' not found
+> k
+[1] 32 38 42 51 58
+> f
+[1] 51 43 38 56 50
+> ksz2<-function(k,f){S=0; for(i in 1:length(k)){S=S+(f[i]/sumf(f)-k[i]/sumk(k))^2/(f[i]+k[i])}; return(sumf(f)*sumk(k)*S)}
+> ksz2(k,f)
+[1] 5.061591
 > 
