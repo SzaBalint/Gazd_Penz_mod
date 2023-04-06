@@ -1,0 +1,31 @@
+> m
+     [,1] [,2] [,3] [,4]
+[1,]    2    3    2    5
+[2,]    2    1    3    6
+[3,]    5    7    1    6
+[4,]    6    8    0    3
+> fi<-function(m){S=0; for(i in 1:nrow(m)) for(j in 1:ncol(m){S=S+m[i,j]}; return (for(i in i:nrow(m){S[i]})}
+Error: unexpected '{' in "fi<-function(m){S=0; for(i in 1:nrow(m)) for(j in 1:ncol(m){"
+> fi<-function(m){S=0; for(i in 1:nrow(m)) for(j in 1:ncol(m)){S=S+m[i,j]}; return (for(i in i:nrow(m){S[i]})}
+Error: unexpected '{' in "fi<-function(m){S=0; for(i in 1:nrow(m)) for(j in 1:ncol(m)){S=S+m[i,j]}; return (for(i in i:nrow(m){"
+> fi<-function(m){S=0; for(i in 1:nrow(m)) for(j in 1:ncol(m)){S=S+m[i,j]}; return (for(i in i:nrow(m)){S[i]})}
+> fi(m)
+NULL
+> fi<-function(m){S=0; for(i in 1:nrow(m)) for(j in 1:ncol(m)){S=S+m[i,j]}; return (S)}
+> fi(m)ű
+Error: unexpected symbol in "fi(m)ű"
+> fi(m)
+[1] 60
+> n<-function(m){S=0; for(i in 1:nrow(m)) for(j in 1:ncol(m)){S=S+m[i,j]}; return (S)}
+> n(m)
+[1] 60
+> colSums(m)
+[1] 15 19  6 20
+> rowSums(m)
+[1] 12 12 19 17
+> rowSums(m)[1]
+[1] 12
+> kszm<-function(m){S=0; for(i in 1:nrow(m)) for(j in 1:ncol(m)){S=S+(m[i,j]-(rowSums(m)[i]*colSums(m)[j])/n(m))/(rowSums(m)[i]*colSums(m)[j])}; return(S*n(m))}
+> kszm(m)
+[1] 0.4196269
+> 
