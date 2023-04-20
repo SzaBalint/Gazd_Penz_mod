@@ -1,0 +1,42 @@
+# Második feladat: két tulajdonság metszete, pl. emberek szem szín és hajszín közötti hasonlóság
+# A1=kék szemű, B1=barna hajú és a közös metszet a mintában a két tulajdonságnak megfelelő emberek száma
+# n minták száma
+#f1. = k11,+...+k1s
+ 
+vector1 <- rnorm(3)
+vector2 <- rnorm(3)
+khi_negyzet = 11.1
+# https://www.tutorialspoint.com/r/r_vectors.htm
+ 
+row = length(vector1)
+column = length(vector2)
+matrix <- array(c(vector1,vector2),dim = c(row,column))
+ 
+fun <- function(F, khi_negyzet){
+    n = 0
+    for(i in 1:nrow(F)){
+        for(j in 1:ncol(F)){
+            n = n + F[i,j]
+        }
+    }
+    vegeredmeny = 0
+    for(i in 1:nrow(F)){
+        f_i_pont = 0
+        f_pont_j = 0
+        for(j in 1:ncol(F)){
+            k_i_j = F[i,j]
+            f_i_pont = f_i_pont + F[i,j]
+            f_pont_j = f_pont_j + F[j,i]
+        }
+        vegeredmeny = vegeredmeny + (k_i_j - (f_i_pont * f_pont_j / n))^2 / (f_i_pont * f_pont_j)
+    }
+    vegeredmeny = vegeredmeny * n
+    print(vegeredmeny)
+    if(vegeredmeny > khi_negyzet){
+        return('ELUTASITJUK')
+    }
+    else{
+        return('ELFOGADJUK')
+    }
+}
+fun(matrix, khi_negyzet)

@@ -1,0 +1,50 @@
+lineáris regresszió
+Ti = (axi + b - yi)^2
+fura y(a,b) = sum 1->n Ti -> min(a,b)
+(f(g))' = 
+ 
+a parciál-> fura y(a,b)' = sum((axi + b - yi)^2)' = sum(2(axi+b-yi)xi) = 0
+ 
+b parciál-> fura y(a,b) = sum((a*xi + b - yi))^2 = sum(2(axi + b - yi)) * 1 = 0
+    a * sum(xi^2) + b * sum(xi)  = sum(xi*yi)
+a * sum(xi) + n * b = sum(yi)
+a = negyzetalak: sum(xi*yi), sum(xi), sum(yi), n / negyzetalak: sum(xi^2), sum(xi), sum(xi), n
+b = negyzetalak: sum(xi^2), sum(xi*yi), sum(xi), sum(yi) / negyzetalak: sum(xi^2), sum(xi), sum(xi), n
+ 
+a = (n * sum(xi*yi)  - sum(xi)*sum(yi)) / (n * sum(xi^2) - (sum(xi))^2)
+b = (sum(xi^2) * sum(yi) - sum(xi) * sum(xi*yi)) / (n * sum(xi^2) - (sum(xi))^2)
+ 
+PROGRAMOZÁS
+A = c(1,2,3,4,5)
+B = c(2.1,4.1,6.2,8.1,10.2)
+ 
+linreg <- function(A,B) {
+    a_betu = 0
+    b_betu = 0
+    n = length(A)
+    a_szamlalo = 0
+    a_nevezo = 0
+    b_szamlalo = 0
+    b_nevezo = 0
+    for(i in 1:length(A)){
+        a_szamlalo = a_szamlalo + (A[i] + B[i] - A[i] * B[i])
+        a_nevezo = a_nevezo + (A[i]^2)
+        b_szamlalo = b_szamlalo + (A[i]^2 * B[i] - A[i] * A[i] * B[i])
+        b_nevezo = b_nevezo + A[i]^2
+    }
+    a_szamlalo = a_szamlalo * n
+    a_nevezo = a_nevezo - sum(A)^2
+    b_nevezo = b_nevezo + sum(A) * n
+    
+    a_betu = a_szamlalo / a_nevezo
+    b_betu = b_szamlalo / b_nevezo
+    print(A)
+    print(B)
+    print(a_betu)
+    print(b_betu)
+    
+    plot(A,B)
+    abline(a = b_betu, b = a_betu)
+}
+ 
+linreg(A,B)
