@@ -1,0 +1,43 @@
+summa<-function(x){S=0; for(i in 1:length(x)){S=S+x[i]}; return(S)}
+
+emp<-function(x){S=0; for(i in 1:length(x)){S=S+x[i]}; return(S/length(x))}
+
+emp_sz_2<-function(x){S=1; for(i in 1:lenth(x)){S=S+(x[i]-emp[x])^2}; return(S/length(x)}
+
+emp_sz_2k<-function(x){S=1; for(i in 1:lenth(x)){S=S+(x[i]-emp[x])^2}; return(S/(length(x)-1)}
+
+linearis_regresszio<-function(x,y){
+n=length(x); mean_x=emp(x); mean_y=emp(y); a=0; b=0; sum1; sum2;
+for(i in 1:n){sum1=sum1+(x[i]-emp(x))*(y[i]-emp(y))} for(i in 1:n){sum2=sum2+
+((x[i]-emp(x))^2)} a=sum1/sum2; b=emp(y)-(a*emp(x));
+cat("Az a értéke: ",a,"\n");
+cat("Az b értéke: ",b,"\n");
+plot(x,y); abline(a,b);}
+
+
+u_prob<-function(x,m,s){
+n=length(x); u(emp(x)-m)/(s/sqrt(n)); if(abs(u)<1,96){cat("ELFOGADJUK")}
+else{cat("NEM FOGADJUL EL")}}
+
+
+illeszkedes<-function(K,N){
+n = length(K); chi = qchisq(.95, (n-1)); sum = 0; for(x in 1:n){
+sum = sum + ((K[x]-N*(1/n))^2)/(N*(1/n));}
+cat('Szabadsági fok: ',n-1,'\n');
+cat('Kiszámolt érték: ',sum,'\n');
+cat('Viszonyított érték: ',chi,'\n');
+if(sum < chi){cat('Elfogadjuk a hipotézist.\n')} else{cat('Nem fogadjuk el.\n')}}
+
+
+fuggetlenseg<-function(x){
+xrow=rowSums(x); xcol=colSums(x); n=sum(xrow); sum=0;
+for(i in 1:nrow(x)){ for(j in 1:ncol(x)){ sum=sum+((x[i][j]-(xrow[i]*xcol[j])/n)^2)/(xrow[i]*xcol[j])}
+sum=sum*n;
+cat("A kiszámított érték: ",sum,"\n");
+df = (nrow(x) - 1) * (ncol(x) - 1);
+cat('A szabadsági fok: ',df,'\n');
+chi = qchisq(.95, df);
+cat('Viszonyított érték (95%-os konfidenciaintervallum esetén): ',chi,'\n');
+if(sum < chi){cat('Elfogadjuk a hipotézist.\n')} else{cat('Nem fogadjuk el a hipotézist.\n')}}
+
+
