@@ -18,7 +18,7 @@ plot(x,y); abline(a,b);}
 
 
 u_prob<-function(x,m,s){
-n=length(x); u(emp(x)-m)/(s/sqrt(n)); if(abs(u)<1,96){cat("ELFOGADJUK")}
+n=length(x); u=(emp(x)-m)/(s/sqrt(n)); if(abs(u)<1,96){cat("ELFOGADJUK")}
 else{cat("NEM FOGADJUL EL")}}
 
 
