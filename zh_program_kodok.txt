@@ -8,8 +8,10 @@ emp_sz_2k<-function(x){S=1; for(i in 1:lenth(x)){S=S+(x[i]-emp[x])^2}; return(S/
 
 linearis_regresszio<-function(x,y){
 n=length(x); mean_x=emp(x); mean_y=emp(y); a=0; b=0; sum1; sum2;
-for(i in 1:n){sum1=sum1+(x[i]-emp(x))*(y[i]-emp(y))} for(i in 1:n){sum2=sum2+
-((x[i]-emp(x))^2)} a=sum1/sum2; b=emp(y)-(a*emp(x));
+for(i in 1:n){sum1=sum1+(x[i]-mean_x)*(y[i]-mean_y)} 
+for(i in 1:n){sum2=sum2+((x[i]-mean_x)^2)}
+a=sum1/sum2;
+b=mean_y-(a*mean_x);
 cat("Az a értéke: ",a,"\n");
 cat("Az b értéke: ",b,"\n");
 plot(x,y); abline(a,b);}
@@ -31,7 +33,7 @@ if(sum < chi){cat('Elfogadjuk a hipotézist.\n')} else{cat('Nem fogadjuk el.\n')
 
 fuggetlenseg<-function(x){
 xrow=rowSums(x); xcol=colSums(x); n=sum(xrow); sum=0;
-for(i in 1:nrow(x)){ for(j in 1:ncol(x)){ sum=sum+((x[i][j]-(xrow[i]*xcol[j])/n)^2)/(xrow[i]*xcol[j])}
+for(i in 1:nrow(x)){ for(j in 1:ncol(x)){ sum=sum+((x[i,j]-(xrow[i]*xcol[j])/n)^2)/(xrow[i]*xcol[j])}
 sum=sum*n;
 cat("A kiszámított érték: ",sum,"\n");
 df = (nrow(x) - 1) * (ncol(x) - 1);
@@ -41,3 +43,15 @@ cat('Viszonyított érték (95%-os konfidenciaintervallum esetén): ',chi,'\n');
 if(sum < chi){cat('Elfogadjuk a hipotézist.\n')} else{cat('Nem fogadjuk el a hipotézist.\n')}}
 
 
+exp_regresszio<-function(x,y){
+u=x; v=log(y); mean_u=emp(u); mean_v=emp(v); b=0; c=0; sum1=0; sum2=0; n = length(u);
+for(i in 1:n){sum1 = sum1 + ((u[i]-mean_u)*(v[i]-mean_v))}
+for(i in 1:n){sum2 = sum2 + ((u[i]-mean_u)^2)} 
+b = sum1 / sum2;
+c = mean_v - (a*mean_u);
+a = exp(b);
+cat("Az a értéke: ",a,"\n");
+cat("A b értéke: ",c,"\n");
+plot(u,v);
+abline(b,a);
+}
